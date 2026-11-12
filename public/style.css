@@ -1,0 +1,138 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 24px;
+  gap: 24px;
+}
+
+/* ─── 顶部栏 ─────────────────────────────────── */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.header h1 {
+  font-size: 22px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.status {
+  display: flex;
+  gap: 24px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.status-item { display: inline-flex; align-items: center; gap: 6px; }
+
+.dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #64748b;
+  display: inline-block;
+}
+.dot-ok  { background: #22c55e; box-shadow: 0 0 8px #22c55e; }
+.dot-bad { background: #ef4444; box-shadow: 0 0 8px #ef4444; animation: pulse 1.2s infinite; }
+.dot-mqtt { background: #a78bfa; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+
+/* ─── 数据卡片 ────────────────────────────────── */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.card {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 20px 24px;
+  border-left: 3px solid #334155;
+  transition: transform 0.15s ease;
+}
+.card:hover { transform: translateY(-2px); }
+
+.card-label {
+  font-size: 12px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.card-value {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.card-value-small { font-size: 22px; font-weight: 500; }
+
+.card-unit {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.card-temp { border-left-color: #f87171; }
+.card-temp .card-value { color: #f87171; }
+
+.card-hum { border-left-color: #60a5fa; }
+.card-hum .card-value { color: #60a5fa; }
+
+.card-info .card-value { color: #e2e8f0; }
+
+/* ─── 图表区 ──────────────────────────────────── */
+.charts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  flex: 1;
+  min-height: 300px;
+}
+
+.chart-box {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-title {
+  font-size: 13px;
+  color: #94a3b8;
+  margin-bottom: 8px;
+}
+
+.chart {
+  flex: 1;
+  min-height: 260px;
+}
+
+/* ─── 响应式 ──────────────────────────────────── */
+@media (max-width: 768px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .charts { grid-template-columns: 1fr; }
+  .header { flex-direction: column; align-items: flex-start; gap: 12px; }
+}

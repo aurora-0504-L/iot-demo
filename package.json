@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node publisher.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "pub": "node publisher.js",
     "sub": "node subscriber.js"
@@ -14,6 +15,8 @@
   "type": "commonjs",
   "dependencies": {
     "dotenv": "^18.0.8",
-    "mqtt": "^5.16.1"
+    "express": "^5.3.0",
+    "mqtt": "^5.16.1",
+    "ws": "^8.22.2"
   }
 }

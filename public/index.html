@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IoT 传感器数据仪表盘</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+</head>
+<body>
+  <!-- 顶部状态栏 -->
+  <header class="header">
+    <h1>IoT 传感器数据仪表盘</h1>
+    <div class="status">
+      <span class="status-item">
+        <span class="dot" id="ws-dot"></span>
+        WebSocket: <span id="ws-status">连接中…</span>
+      </span>
+      <span class="status-item">
+        <span class="dot dot-mqtt" id="mqtt-dot"></span>
+        MQTT: <span id="mqtt-status">等待数据…</span>
+      </span>
+    </div>
+  </header>
+
+  <!-- 数据卡片区 -->
+  <section class="cards">
+    <div class="card card-temp">
+      <div class="card-label">温度</div>
+      <div class="card-value" id="temp-value">--</div>
+      <div class="card-unit">°C</div>
+    </div>
+    <div class="card card-hum">
+      <div class="card-label">湿度</div>
+      <div class="card-value" id="hum-value">--</div>
+      <div class="card-unit">%</div>
+    </div>
+    <div class="card card-info">
+      <div class="card-label">设备 ID</div>
+      <div class="card-value" id="device-value">--</div>
+    </div>
+    <div class="card card-info">
+      <div class="card-label">最后更新</div>
+      <div class="card-value card-value-small" id="time-value">--</div>
+    </div>
+  </section>
+
+  <!-- 图表区 -->
+  <section class="charts">
+    <div class="chart-box">
+      <div class="chart-title">温度趋势</div>
+      <div class="chart" id="temp-chart"></div>
+    </div>
+    <div class="chart-box">
+      <div class="chart-title">湿度趋势</div>
+      <div class="chart" id="hum-chart"></div>
+    </div>
+  </section>
+
+  <script src="/app.js"></script>
+</body>
+</html>
